@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+/* Variables globales */
+:root {
+  --bs-blue: #0d6efd;
+  --bs-indigo: #6610f2;
+  --bs-purple: #6f42c1;
+  --bs-pink: #d63384;
+  --bs-red: #dc3545;
+  --bs-orange: #fd7e14;
+  --bs-yellow: #ffc107;
+  --bs-green: #198754;
+  --bs-teal: #20c997;
+  --bs-cyan: #0dcaf0;
+  --bs-white: #fff;
+  --bs-gray: #6c757d;
+  --bs-gray-dark: #343a40;
+  --bs-primary: #0d6efd;
+  --bs-secondary: #6c757d;
+  --bs-success: #198754;
+  --bs-info: #0dcaf0;
+  --bs-warning: #ffc107;
+  --bs-danger: #dc3545;
+  --bs-light: #f8f9fa;
+  --bs-dark: #212529;
+  --bs-font-sans-serif: "system-ui", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --bs-font-monospace: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --bs-body-font-family: var(--bs-font-sans-serif);
+  --bs-body-font-size: 1rem;
+  --bs-body-font-weight: 400;
+  --bs-body-line-height: 1.5;
+  --bs-body-color: #212529;
+  --bs-body-bg: #fff;
+}
+
+/* Reset y estilos generales */
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--bs-body-font-family);
+  font-size: var(--bs-body-font-size);
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  line-height: var(--bs-body-line-height);
+}
+
+/* Botones */
+button:not(:disabled),
+[type="button"]:not(:disabled) {
+  cursor: pointer;
+}
+
+/* Clases personalizadas */
+.fw-black {
+  font-weight: 900;
+}
+
+.btn-dark {
+  background-color: var(--bs-dark);
+  color: var(--bs-white);
+}
+
+.btn-dark:hover {
+  background-color: #000;
+}
+
+/* Carrito */
+.carrito {
+  z-index: 100;
+  position: relative;
+}
+
+.carrito #carrito {
+  width: 100%;
+  height: auto;
+  max-height: 400px; /* Mejora en navegabilidad */
+  overflow-y: auto; /* Scroll si hay contenido excedente */
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  background-color: var(--bs-white);
+}
+
+/* Ejemplo adicional para el carrito (opcional) */
+.carrito ul {
+  list-style: none;
+}
+
+.carrito ul li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.carrito ul li:last-child {
+  border-bottom: none;
+}
+
+/* Otros ajustes */
+.m-0 {
+  margin: 0 !important;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--bs-primary);
+}
+
+a:hover {
+  color: var(--bs-blue);
+}
+
+/* Transiciones y accesibilidad */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  .carrito {
+    max-width: 100%;
+  }
+}
