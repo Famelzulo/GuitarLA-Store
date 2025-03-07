@@ -10,7 +10,7 @@
 .carrito {
   background-color: transparent;
   border: none;
-  max-width: 2rem;
+  width: 20rem;
   position: relative;
   z-index: 100;
   
@@ -19,36 +19,34 @@
 .carrito #carrito {
   display: none;
   position: absolute;
-  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+  box-shadow: 0px 10px 15px -3px rgba(221, 21, 21, 0.1);
 }
 
 .carrito:hover #carrito {
-  display: block;
+  display:block;
   background-color: white;
-  padding: 10px;
-  height: fit-content;
-  min-width: 350px;
-  width: fit-content;
-  top: 100%;
-  right: 0;
-  left: unset;
-  margin-left: unset;
-  margin-right: unset;
+  padding: 5px;
+  height: 295px;
+  top: 100%; /* Usa 100% en lugar de 140% para evitar que se salga */
+  right: 0; /* Alinea correctamente a la derecha */
+  left: auto; /* Asegura que no se desplace hacia la izquierda */
+  margin-left: 0;
+  
 }
 
 #carrito img {
-  width: 30px;
+  width: 4rem;
 }
 
 #carrito .btn-danger {
-  font-size: 10px;
+  font-size: 15px;
   border-radius: 50%;
   padding: 5px 9px;
 }
 
 #carrito .btn-dark {
   padding: 0 2px;
-  margin: 0 3px;
+  margin: 0px 3px;
 }
 .m-0 {
   margin: 0;
@@ -137,6 +135,7 @@
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;
+    margin-left: 57px;
   }
 }
 
@@ -151,6 +150,7 @@ body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background-image: url("https://st2.depositphotos.com/2086167/50581/v/450/depositphotos_505814864-stock-illustration-guitars-pattern-two-colors-rock.jpg");
 }
 
  h3, .h3, h2, .h2, h1, .h1 {
@@ -189,9 +189,17 @@ h3, .h3 {
   }
 }
 
+h4 {
+  display: none; /* Esto lo ocultaría */
+  visibility: hidden; /* Esto lo haría invisible */
+  color: white; /* Si el fondo es blanco, podría no verse */
+}
+
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+  color: #ffbe28;
+  margin-left: 15px;
 }
 
 a {
@@ -207,9 +215,19 @@ a:not([href]):not([class]), a:not([href]):not([class]):hover {
   text-decoration: none;
 }
 
+
+
 img,
-svg {
-  vertical-align: middle;
+fondoguitar
+ {
+  /*ertical-align: middle;*/
+  width:63rem;
+  height: 15rem;
+  object-fit: cover;
+  margin-top: -3rem;
+  margin-bottom: -6rem;
+  border-radius: 2rem;
+  
 }
 
 table {
@@ -260,7 +278,9 @@ button:not(:disabled),
 [type=button]:not(:disabled) {
   cursor: pointer;
 }
-
+button:hover {
+  transform: scale(1.2); /* Aumenta el tamaño en un 20% */
+}
 ::-moz-focus-inner {
   padding: 0;
   border-style: none;
@@ -313,10 +333,26 @@ button:not(:disabled),
 }
 
 .img-fluid {
-  max-width: 100%;
+  width: 133px;
   height: auto;
+  border-radius: 2rem;
+  border: 5px solid yellow;
+  margin-left: -2rem;
+  margin-top: -11rem;
 }
 
+.img-fluid:hover {
+  transform: scale(1.1); /* Aumenta el tamaño en un 20% */
+}
+
+ .img2{
+  width:5rem;
+  height: auto;
+  border-radius: 3rem;
+  border: 5px solid yellow;
+  margin-left: 10rem;
+  margin-top: -11rem;
+ }
 
 .container-xl {
   --bs-gutter-x: 1.5rem;
@@ -338,7 +374,7 @@ button:not(:disabled),
   }
 }
 .row {
-  --bs-gutter-x: 1.5rem;
+  --bs-gutter-x: 4.5rem;
   --bs-gutter-y: 0;
   display: flex;
   flex-wrap: wrap;
@@ -587,7 +623,7 @@ button:not(:disabled),
 }
 
 .w-100 {
-  width: 100% !important;
+  width: 102% !important;
 }
 
 .justify-content-end {
@@ -680,6 +716,7 @@ button:not(:disabled),
 
 .text-center {
   text-align: center !important;
+  font-size: 50px;
 }
 
 .text-uppercase {
@@ -697,6 +734,8 @@ button:not(:disabled),
 .text-black {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-black-rgb), var(--bs-text-opacity)) !important;
+  color: rgb(211 178 3) !important;
+  margin-left: 14px;
 }
 
 .text-white {
@@ -754,7 +793,7 @@ button:not(:disabled),
   }
 }
 .header {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)
+  /*background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)*/
   background-position: 50%;
   background-size: cover;
   position: relative;
