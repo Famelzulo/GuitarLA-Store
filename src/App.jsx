@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Guitar from "./components/Guitar";
 import { db } from "./db";
-//import { PayPalScriptProvider } from "@paypal/react-paypal-js";
-//import PayPalButton from "./PayPalButton";
+
+
 
 function App() {
   //state
@@ -71,13 +71,47 @@ function App() {
     setCart([]);
   }
 
-  const totalAmount = cart
-    .reduce((total, item) => total + item.price * item.quantity, 0)
-    .toFixed(2);
+  const totalAmount = cart.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+
+  //const totalAmount = cart
+    //.reduce((total, item) => total + item.price * item.quantity, 0)
+    //.toFixed(2);
 
   console.log("totalAmount:"); // Depuración
 
-  const formattedTotalAmount = Number(totalAmount).toFixed(2); // Asegurar que es número
+  //const formattedTotalAmount = Number(totalAmount).toFixed(2); // Asegurar que es número
+  const formattedTotalAmount = parseFloat(totalAmount);
+
+
+  async function handleCheckout() {
+    try {
+      const cartItems = cart.map((item) => ({
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+      }));
+
+      const response = await fetch("http://localhost:5000/create_preference", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: cartItems }),
+      });
+
+      const data = await response.json();
+
+      if (data.id) {
+        window.location.href = `https://www.mercadopago.com.pe/checkout/v1/redirect?preference_id=${data.id}`;
+      }
+    } catch (error) {
+      console.error("Error al procesar el pago:", error);
+    }
+  }
+
+ 
+
 
   return (
     <>
@@ -89,14 +123,7 @@ function App() {
         clearCart={clearCart}
       />
 
-      {/* /* <PayPalScriptProvider options={{ "client-id": "AZOwea50fTWEcVZIUO-Tp7tOqurJobiCB-CgXMlvfQJpAshn8Uv2R3CXTvrXfMYWO3CzMPDe6ep5g-ym" }}>
-          <div className="text-center mt-5">
-            
-            <h2>Total a pagar: ${formattedTotalAmount}</h2>
 
-            <PayPalButton totalAmount={totalAmount} />
-          </div>
-        </PayPalScriptProvider> */}
 
       <main className="container-xl mt-5">
         <h2 className="text-center">Nuestra Colección</h2>
@@ -115,6 +142,13 @@ function App() {
           })}
         </div>
       </main>
+
+      <div className="container text-center mt-5">
+      <h1>Tienda Online</h1>
+        <button onClick={handleCheckout}>Pagar con Mercado Pago</button>
+      </div>
+
+        
 
       <footer className="bg-dark mt-5 py-5">
         <div className="container-xl">

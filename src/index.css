@@ -17,16 +17,16 @@
 }
 
 .carrito #carrito {
-  display: none;
+  visibility: hidden;
   position: absolute;
-  box-shadow: 0px 10px 15px -3px rgba(221, 21, 21, 0.1);
+  box-shadow: 0px 10px 15px -3px rgba(214, 7, 7, 0.1);
 }
 
 .carrito:hover #carrito {
-  display:block;
-  background-color: white;
+  visibility: visible;
+  background-color: rgb(165, 67, 67);
   padding: 5px;
-  height: 295px;
+  height: auto;
   top: 100%; /* Usa 100% en lugar de 140% para evitar que se salga */
   right: 0; /* Alinea correctamente a la derecha */
   left: auto; /* Asegura que no se desplace hacia la izquierda */
@@ -35,7 +35,8 @@
 }
 
 #carrito img {
-  width: 4rem;
+  width: 100%;
+  height: 100%;
 }
 
 #carrito .btn-danger {
@@ -279,7 +280,7 @@ button:not(:disabled),
   cursor: pointer;
 }
 button:hover {
-  transform: scale(1.2); /* Aumenta el tamaño en un 20% */
+  transform: scale(1.2); 
 }
 ::-moz-focus-inner {
   padding: 0;
@@ -623,7 +624,7 @@ button:hover {
 }
 
 .w-100 {
-  width: 102% !important;
+  width: 100% !important;
 }
 
 .justify-content-end {
@@ -814,3 +815,11 @@ button:hover {
     z-index: 10;
   }
 }
+
+.paypal-container {
+  display: flex;
+  justify-content: flex-end; /* Mueve el botón a la derecha */
+  width: 200px; /* Reduce el ancho del botón */
+  margin-right: 20px; /* Ajusta la distancia del borde derecho */
+}
+
