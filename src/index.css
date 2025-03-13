@@ -339,7 +339,7 @@ button:hover {
   border-radius: 2rem;
   border: 5px solid yellow;
   margin-left: -2rem;
-  margin-top: -11rem;
+  margin-top: -6rem;
 }
 
 .img-fluid:hover {
@@ -826,7 +826,7 @@ button:hover {
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s;
-  margin-left: 69rem;
+  margin-left: 60rem;
   margin-top: -6rem;
 }
 
@@ -851,10 +851,13 @@ button:hover {
   text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
-  margin-left: 73rem;
-  transition: background 0.3s;
+  margin-left: 63.5rem;
+  transition: background 0.3s, transform 0.3s;
+  cursor: pointer;
+
 
 }
 .whatsapp-button:hover {
-  background-color: #1ebe57;
+  background-color: #1b9746;
+  transform: scale(1.2); 
 }
