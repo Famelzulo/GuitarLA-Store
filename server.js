@@ -3,35 +3,42 @@ import cors from "cors";
 import mercadopago from "mercadopago";
 
 const app = express();
-const PORT = 5000;
+app.use(express.json());
+app.use(cors());
 
-app.use(cors()); // Permite peticiones desde el frontend
-app.use(express.json()); // Permite recibir JSON en requests
-
+// Configurar credenciales de Mercado Pago
 mercadopago.configure({
-  access_token: "TEST-5583470321193484-031103-613f0a58bead2b835f7a00accb976f51-2298864338"
+  access_token: "TEST-8196631391328899-031302-6b028cc9190f3249000055cfe889da5f-2298864338" 
 });
 
+// Ruta para crear una preferencia de pago
 app.post("/create_preference", async (req, res) => {
   try {
-    const preference = {
-      items: [
-        {
-          title: "Producto de prueba",
-          unit_price: 100,
-          quantity: 1,
-        },
-      ],
+    const { items } = req.body;
+
+    let preference = {
+      items: items.map((item) => ({
+        title: item.name,
+        unit_price: Number(item.price),
+        quantity: Number(item.quantity),
+      })),
+      back_urls: {
+        success: "http://localhost:5000/success",
+        failure: "http://localhost:5000/failure",
+        pending: "http://localhost:5000/pending",
+      },
+      auto_return: "approved",
     };
 
     const response = await mercadopago.preferences.create(preference);
     res.json({ id: response.body.id });
+
   } catch (error) {
-    console.error("Error al crear la preferencia:", error);
-    res.status(500).json({ error: "Error al crear la preferencia de pago" });
+    res.status(500).json({ error: error.message });
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Servidor en http://localhost:${PORT}`);
+// Iniciar el servidor en el puerto 5000
+app.listen(5000, () => {
+  console.log("✅ Servidor corriendo en http://localhost:5173");
 });

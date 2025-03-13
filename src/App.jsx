@@ -131,6 +131,7 @@ function App() {
         decreaseQuantity={decreaseQuantity}
         clearCart={clearCart}
       />
+ 
   <div className="container text-center mt-5">
         <button className="btn-mercadopago" onClick={handleCheckout}>Pagar con Mercado Pago</button>
       </div>

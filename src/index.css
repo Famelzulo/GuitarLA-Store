@@ -816,12 +816,6 @@ button:hover {
   }
 }
 
-.paypal-container {
-  display: flex;
-  justify-content: flex-end; /* Mueve el botón a la derecha */
-  width: 200px; /* Reduce el ancho del botón */
-  margin-right: 20px; /* Ajusta la distancia del borde derecho */
-}
 
 .btn-mercadopago {
   background-color: #009ee3; /* Azul de Mercado Pago */
@@ -858,6 +852,8 @@ button:hover {
   border-radius: 5px;
   font-weight: bold;
   margin-left: 73rem;
+  transition: background 0.3s;
+
 }
 .whatsapp-button:hover {
   background-color: #1ebe57;
