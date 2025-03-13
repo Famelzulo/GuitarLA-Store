@@ -3,7 +3,7 @@ export const db = [
         id: 1,
         name: 'Lukather',
         image: 'guitarra_01',
-        description: 'Es una guitarra eléctrica fabricada por Ernie Ball Music Man. ',
+        description: 'Este modelo monta un cuerpo de aliso especial, del que se ha conseguido una resonancia impresionante.',
         price: 299,
     },
     {
@@ -17,7 +17,7 @@ export const db = [
         id: 3,
         name: 'Borland',
         image: 'guitarra_03',
-        description: 'cuerdas de acero con 12 cuerdas en seis cursos, que produce un tono de llamada más grueso que una guitarra estándar de seis cuerdas.',
+        description: 'cuerdas de acero con 12 cuerdas en seis cursos, que produce un tono de llamada más grueso que una guitarra estándar .',
         price: 329,
     },
     {
