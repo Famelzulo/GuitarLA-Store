@@ -8,6 +8,7 @@ import { db } from "./db";
 function App() {
   //state
 
+
   const initialCart = () => {
     const localStorageCart = localStorage.getItem("cart");
     return localStorageCart ? JSON.parse(localStorageCart) : [];
@@ -15,6 +16,8 @@ function App() {
 
   const [data] = useState(db);
   const [cart, setCart] = useState(initialCart);
+
+  const [search, setSearch] = useState("");
 
   const MAX_ITEMS = 5;
   const MIN_ITEMS = 1;
@@ -110,11 +113,17 @@ function App() {
     }
   }
 
- 
+  
+
+  const filteredGuitars = data.filter((guitar) =>
+    guitar.name.toLowerCase().includes(search.toLowerCase())
+  );
 
 
   return (
     <>
+
+    
       <Header
         cart={cart}
         removeFromCart={removeFromCart}
@@ -122,31 +131,69 @@ function App() {
         decreaseQuantity={decreaseQuantity}
         clearCart={clearCart}
       />
+  <div className="container text-center mt-5">
+        <button className="btn-mercadopago" onClick={handleCheckout}>Pagar con Mercado Pago</button>
+      </div>
+
+      <h2 className="text-center">Nuestra Colección</h2>
+
+      <a 
+  href="https://wa.me/+51986165341" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="whatsapp-button"
+>
+  Contactar por WhatsApp
+</a>
+
+      <div className="container-buscador">
+        <h2>Buscador</h2>
+        <input type="text"
+          placeholder="Escribe el nombre..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        </div>
 
 
 
       <main className="container-xl mt-5">
-        <h2 className="text-center">Nuestra Colección</h2>
-
         <div className="row mt-5">
-          {data.map((guitar) => {
-            return (
+   
+
+        {search.trim() !== "" ? (
+            filteredGuitars.length > 0 ? (
+              filteredGuitars.map((guitar) => (
+                <Guitar
+                  key={guitar.id}
+                  guitar={guitar}
+                  cart={cart}
+                  setCart={setCart}
+                  addToCart={addToCart}
+                />
+                
+              ))
+            ) : (
+              <p className="text-center">No se encontraron guitarras</p>
+            )
+          ) : (
+
+            
+            data.map((guitar) => (
               <Guitar
-                key={guitar.id} //prop especial al iterar una lista
+                key={guitar.id}
                 guitar={guitar}
                 cart={cart}
                 setCart={setCart}
                 addToCart={addToCart}
               />
-            );
-          })}
-        </div>
+              
+            ))
+          )}
+          </div>
+        
       </main>
 
-      <div className="container text-center mt-5">
-      <h1>Tienda Online</h1>
-        <button onClick={handleCheckout}>Pagar con Mercado Pago</button>
-      </div>
 
         
 
